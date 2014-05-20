@@ -1,4 +1,11 @@
 Django==1.6.4
 Pillow==2.4.0
+django-allauth==0.16.1
+django-debug-toolbar==1.2.1
 django-zurb-foundation==5.1.1
+oauthlib==0.6.1
+python-openid==2.2.5
+requests==2.3.0
+requests-oauthlib==0.4.0
+sqlparse==0.1.11
 wsgiref==0.1.2
