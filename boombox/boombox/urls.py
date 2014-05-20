@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'boombox.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    (r'^accounts/', include('allauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
