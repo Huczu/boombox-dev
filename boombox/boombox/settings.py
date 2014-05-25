@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.google',
+    'profiles',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,3 +113,13 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'noreplay@soltysik.org'
+
+EMAIL_HOST_PASSWORD = 'sender123'
