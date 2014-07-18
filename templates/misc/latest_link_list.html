@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+    <h1>Latest posts (ordered by submitted date)</h1>
+
+    {% for post in object_list %}
+        <hr/>
+        <p>{{ post.title }}</p>
+        <p><a href="{{ post.url }}" target="_blank">{{ post.url }}</a></p>
+        <p>{{ post.author }}</p>
+        <p>{{ post.submitted_on }}</p>
+        {% if post.tags.count %}
+        <p><label>Tagi:</label>
+            {{ post.tags.all|join:", " }}.
+        </p>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

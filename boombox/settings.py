@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ZMIEN_TO_POZNIEJ'
+SECRET_KEY = 'keep the secret key used in production secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.google',
-    'profiles',
+    'misc',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +99,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR,  'templates'),
+)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     # Required by allauth template tags
@@ -114,12 +119,3 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-EMAIL_HOST = 'smtp.gmail.com'
-
-EMAIL_PORT = 587
-
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = 'noreplay@soltysik.org'
-
-EMAIL_HOST_PASSWORD = 'sender123'
