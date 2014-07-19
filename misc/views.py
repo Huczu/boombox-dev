@@ -5,7 +5,7 @@ from misc.models import Link, Tag
 class LatestLinkView(ListView):
     model = Link
     queryset = Link.objects.all().order_by('-submitted_on')
-    paginate_by = 5
+    paginate_by = 2
     template_name = "misc/latest_link_list.html"
 
 
