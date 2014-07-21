@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     # 'south',
     'debug_toolbar',
     'taggit',
-    'taggit_templatetags',
+    'taggit_templatetags'
 )
 
 MIDDLEWARE_CLASSES = (

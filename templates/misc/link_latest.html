@@ -1,61 +1,55 @@
 {% extends "base.html" %}
 {% load misc_extras %}
+
 {% block base_body %}
+    <div class="large-12 columns" role="content">
     <h1>Latest posts (ordered by submitted date)</h1>
 
     {% for post in object_list %}
         <hr/>
-        <p>{{ post.title|cut:"" }}</p>
+        <p><a href="{% url 'link_detail' slug=post.title|slugify pk=post.pk  %}">{{ post.title }}</a></p>
         <p><a href="{{ post.url }}" target="_blank">{{ post.url }}</a></p>
 
         {% if post.provider == "YT" %}
             <iframe id="ytplayer"
-                    width="640"
-                    height="390"
-                    frameborder="0"
-                    src="http://www.youtube.com/embed/{{ post.url|youtube_id }}">
+            width="640"
+            height="390"
+            frameborder="0"
+            src="http://www.youtube.com/embed/{{ post.url|youtube_id }}">
             </iframe>
         {% endif %}
-
         {% if post.provider == "SC" %}
             <iframe width="640"
-                    height="170"
-                    frameborder="0"
-                    src="http://w.soundcloud.com/player/?url={{ post.url }}">
+            height="170"
+            frameborder="0"
+            src="http://w.soundcloud.com/player/?url={{ post.url }}">
             </iframe>
         {% endif %}
-
-       {% if post.provider == "VI" %}
+        {% if post.provider == "VI" %}
             <iframe width="640"
-                    height="390"
-                    frameborder="0"
-                    src="//player.vimeo.com/video/{{ post.url|vimeo_id }}">
+            height="390"
+            frameborder="0"
+            src="//player.vimeo.com/video/{{ post.url|vimeo_id }}">
             </iframe>
         {% endif %}
 
         <p>{{ post.author }}</p>
         <p>{{ post.submitted_on }}</p>
         {% if post.tags.count %}
-        <p><label>Tagi:</label>
-            {{ post.tags.all|join:", " }}.
-        </p>
+            <p>Tagi: {{ post.tags.all|join:", " }}.</p>
         {% endif %}
     {% endfor %}
 
-    <style type="text/css">
-    ul {
-        display: inline;
-    }
-    </style>
     {% if is_paginated %}
         <ul>
         {% if page_obj.has_previous %}
-        <li><a href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a></li>
         {% endif %}
 
         {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a></li>
         {% endif %}
         </ul>
     {% endif %}
+    </div>
 {% endblock %}

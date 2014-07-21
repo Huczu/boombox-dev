@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block base_body %}
-    <div class="large-12 columns" role="content">
+    <div class="large-4 columns" role="content">
         <form method="post" action="">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Edit">
+            <input type="submit" value="Add">
         </form>
     </div>
 {% endblock %}

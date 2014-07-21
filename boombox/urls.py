@@ -4,7 +4,7 @@ from django.contrib import admin
 from boombox import settings
 from misc.views import LatestLinkView, TagsListView, TagDetailView, \
     UsersListView, UserProfileDetailView, DashboardView, UserProfileEditView, \
-    CreateLinkView, LinkDetailView
+    CreateLinkView, LinkDetailView, UpdateLinkView, DeleteLinkView
 from django.contrib.auth.decorators import login_required
 
 admin.autodiscover()
@@ -15,8 +15,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', LatestLinkView.as_view(), name="latest"),
     url(r'^link/(?P<pk>\d+)/(?P<slug>.+)/$', LinkDetailView.as_view(),
-        name="lin"
-             "k_detail"),
+        name="link_detail"),
 
     url(r'^tags/(?P<slug>.+)$', TagDetailView.as_view(), name="tag_detail"),
     url(r'^tags/$', TagsListView.as_view(), name="tag"),
@@ -27,9 +26,12 @@ urlpatterns = patterns(
 
     url(r'^edit_profile/$',
         login_required(UserProfileEditView.as_view()), name='edit_profile'),
-    url(r'^create_post/$', login_required(CreateLinkView.as_view()),
+    url(r'^post/create/$', login_required(CreateLinkView.as_view()),
         name='create_post'),
-    # url(r'^edit_link/(?P<slug>\w+)/$'),
+    url(r'^post/edit/(?P<pk>\d+)$', login_required(UpdateLinkView.as_view()),
+        name='edit_post'),
+    url(r'^post/delete/(?P<pk>\d+)$', login_required(DeleteLinkView.as_view()),
+        name='delete_post'),
     # url(r'^delete_link/(?P<slug>\w+)/$'),
     url(r'^dashboard/$', login_required(DashboardView.as_view()),
         name="dashboard"),

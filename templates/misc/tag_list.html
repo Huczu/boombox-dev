@@ -2,12 +2,12 @@
 {% load taggit_extras %}
 
 {% block base_body %}
-    <h1>List of tags</h1>
-{% get_tagcloud as tags %}
-<ul>
-{% for tag in tags %}
-<li><font size={{tag.weight|floatformat:0}}>{{tag}}({{tag.num_times}})</font></li>
-
-{% endfor %}
-<ul>
+    <div class="large-12 columns" role="content">
+        {% get_taglist as tags %}
+        <ul>
+            {% for tag in tags %}
+                <li>{{tag}} ({{tag.num_times}})</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block base_body %}
+    <div class="large-12 columns" role="content">
+        <p>Are you sure you want to delete: "{{ object.title }}"?</p>
+        <form method="post" action="{% url 'delete_post' pk=object.pk %}">
+            {% csrf_token %}
+            <a href="{% url 'link_detail' slug=object.title|slugify pk=object.pk %}">Go back</a>
+            <p><input type="submit" value="Confirm deletion"/></p>
+        </form>
+    </div>
+{% endblock %}

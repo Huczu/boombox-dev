@@ -1,11 +1,26 @@
-{% if user.is_authenticated %}
-    <a href="{% url 'account_logout' %}">Log out</a>
-    <a href="{% url 'profile' slug=user.username %}">{{ user.username }} profile</a>
-{% else %}
-    <a href="{% url 'account_login' %}">Log in</a>
-    <a href="{% url 'account_signup' %}">Register</a>
-{% endif %}
-<a href="{% url 'latest' %}">Latest</a>
-<a href="{% url 'tag' %}">Tags</a>
-<a href="{% url 'user' %}">Users</a>
-<a href="{% url 'create_post' %}">Create post</a>
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="{% url 'latest' %}">Boombox.dev</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <ul class="right">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' slug=user.username %}">{{ user.username }} profile</a></li>
+                <li><a href="{% url 'account_logout' %}">Log out</a></li>
+            {% else %}
+                <li><a href="{% url 'account_login' %}">Log in</a></li>
+                <li><a href="{% url 'account_signup' %}">Register</a></li>
+            {% endif %}
+        </ul>
+        <ul class="left">
+            <li><a href="{% url 'latest' %}">Latest</a></li>
+            <li><a href="{% url 'tag' %}">Tags</a></li>
+            <li><a href="{% url 'user' %}">Users</a></li>
+            <li><a href="{% url 'create_post' %}">Create post</a></li>
+        </ul>
+    </section>
+</nav>

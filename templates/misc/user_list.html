@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block base_body %}
-    <h1>List of users</h1>
-    <ul>
-    {% for user in object_list %}
-        <li><a href="{% url 'profile' slug=user %}">{{ user.username }}</a></li>
-    {% endfor %}
-    </ul>
+    <div class="large-12 columns" role="content">
+        <h1>List of users</h1>
+        <ul>
+        {% for user in object_list %}
+            <li><a href="{% url 'profile' slug=user %}">{{ user.username }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
