@@ -1,0 +1,33 @@
+{% load misc_extras %}
+<p>{{ object.title }}</p>
+
+{% if object.provider == "YT" %}
+    <iframe id="ytplayer"
+            width="640"
+            height="390"
+            frameborder="0"
+            src="http://www.youtube.com/embed/{{ object.url|youtube_id }}">
+    </iframe>
+{% endif %}
+
+{% if object.provider == "SC" %}
+    <iframe width="640"
+            height="170"
+            frameborder="0"
+            src="http://w.soundcloud.com/player/?url={{ object.url }}">
+    </iframe>
+{% endif %}
+
+{% if object.provider == "VI" %}
+    <iframe width="640"
+            height="390"
+            frameborder="0"
+            src="//player.vimeo.com/video/{{ object.url|vimeo_id }}">
+    </iframe>
+{% endif %}
+
+<p>{{ object.author }}</p>
+<p>{{ object.submitted_on }}</p>
+{% if object.tags %}
+<p>Tagi: {{ object.tags.all|join:", " }}. </p>
+{% endif %}

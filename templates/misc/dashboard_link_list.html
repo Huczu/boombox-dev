@@ -5,7 +5,7 @@
 
     {% for post in object_list %}
         <hr/>
-        <p><a href="{% url 'link_detail' slug=post.title|slugify pk=post.pk  %}">{{ post.title }}</a></p>
+        <p>{{ post.title|cut:"" }}</p>
         <p><a href="{{ post.url }}" target="_blank">{{ post.url }}</a></p>
 
         {% if post.provider == "YT" %}
@@ -36,7 +36,9 @@
         <p>{{ post.author }}</p>
         <p>{{ post.submitted_on }}</p>
         {% if post.tags.count %}
-        <p>Tagi: {{ post.tags.all|join:", " }}.</p>
+        <p><label>Tagi:</label>
+            {{ post.tags.all|join:", " }}.
+        </p>
         {% endif %}
     {% endfor %}
 

@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+    <a href="{% url 'account_logout' %}">Log out</a>
+    <a href="{% url 'profile' slug=user.username %}">{{ user.username }} profile</a>
+{% else %}
+    <a href="{% url 'account_login' %}">Log in</a>
+    <a href="{% url 'account_signup' %}">Register</a>
+{% endif %}
+<a href="{% url 'latest' %}">Latest</a>
+<a href="{% url 'tag' %}">Tags</a>
+<a href="{% url 'user' %}">Users</a>
+<a href="{% url 'create_post' %}">Create post</a>

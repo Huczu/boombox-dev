@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.urlresolvers import reverse_lazy
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -47,7 +48,10 @@ INSTALLED_APPS = (
     # 'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.google',
     'misc',
-    'south',
+    # 'south',
+    'debug_toolbar',
+    'taggit',
+    'taggit_templatetags',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,7 +81,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'pl'
+LANGUAGE_CODE = 'en_US'
 
 TIME_ZONE = 'UTC'
 
@@ -119,3 +123,8 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+LOGIN_REDIRECT_URL = reverse_lazy("latest")
+
+MEDIA_ROOT = "/home/matejko/Code/boombox-dev/media/"
+
+MEDIA_URL = "/site_media/"

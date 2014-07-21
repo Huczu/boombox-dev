@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block base_body %}
+<h2>Profil użytkownika {{ object.username }}</h2>
+    {% if object.userprofile.about %}
+        <p><b>O sobie:</b> {{ object.userprofile.about }}</p>
+    {% endif %}
+    {% if object.userprofile.website %}
+        <p><b>Strona domowa:</b> <a href="{{ object.userprofile.website }}">{{ object.userprofile.website }}</a></p>
+    {% endif %}
+
+    {% if object.userprofile.avatar %}
+        <img src="/site_media/{{ object.userprofile.avatar }}" width="300" height="300">
+    {% endif %}
+
+{% endblock %}
